@@ -1,0 +1,17 @@
+Package: plumbpkg
+Type: Package
+Title: Include Plumber APIs in a Package
+Version: 0.1.0
+Author: James Blair
+Maintainer: James Blair <james@rstudio.com>
+Description: This is an example package showcasing how to include Plumber APIs
+    in an R package.
+License: MIT + file LICENSE
+Encoding: UTF-8
+LazyData: true
+Imports: 
+    plumber
+Suggests: 
+    testthat (>= 2.1.0),
+    httr
+RoxygenNote: 6.1.1
