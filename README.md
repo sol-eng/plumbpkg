@@ -48,4 +48,4 @@ on RStudio Community.
 The `R/` directory contains all of the R functions used in the Plumber APIs.
 This enables the functions to be tested using files in the `tests/` directory.
 The Plumber APIs are defined in files in `inst/plumber/` and are also tested 
-using testthat.
+using testthat and [httr](https://httr.r-lib.org).
