@@ -53,7 +53,7 @@ TASK=$(echo ${DEPLOY} | jq -r .task_id)
 # Poll until task has completed
 FINISHED=false
 CODE=-1
-START=0
+START=1
 echo "Deployment task: ${TASK}"
 while [ "${FINISHED}" != "true" ] ; do
     DATA=$(curl --silent --show-error -k -L --max-redirs 0 --fail \
