@@ -72,5 +72,8 @@ done
     exit 1
 fi
 
-echo "Task: ${TASK} Complete."
+# Remove side-effects
+rm -f "${BUNDLE_PATH}"
+rm -f cookie-jar.txt
 
+echo "Task: ${TASK} Complete."
