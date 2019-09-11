@@ -1,7 +1,7 @@
 # plumbpkg
 
 <!-- badges: start -->
-[![Travis build status](https://travis-ci.org/sol-eng/plumbkg.svg?branch=master)](https://travis-ci.org/sol-eng/plumbpkg)
+[![Travis build status](https://travis-ci.org/sol-eng/plumbpkg.svg?branch=master)](https://travis-ci.org/sol-eng/plumbpkg)
 <!-- badges: end -->
 
 This is a simple package illustrating how to incorporate
