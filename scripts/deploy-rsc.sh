@@ -42,7 +42,7 @@ BUNDLE=$(echo ${UPLOAD} | jq -r .bundle_id)
 echo "Created bundle: $BUNDLE"
 
 # Deploy the bundle
-DEPLOY=$(curl --silent --show-error -k -L --max-redirs 0 --fail -X POST \
+DEPLOY=$(curl -c cookie-jar.txt --silent --show-error -k -L --max-redirs 0 --fail -X POST \
               -H "Authorization: Key ${CONNECT_API_KEY}" \
               --data '{"bundle":'"${BUNDLE}"'}' \
               "${CONNECT_SERVER}/__api__/v1/experimental/content/${APP}/deploy")
@@ -53,10 +53,10 @@ TASK=$(echo ${DEPLOY} | jq -r .task_id)
 # Poll until task has completed
 FINISHED=false
 CODE=-1
-START=1
+START=0
 echo "Deployment task: ${TASK}"
 while [ "${FINISHED}" != "true" ] ; do
-    DATA=$(curl --silent --show-error -k -L --max-redirs 0 --fail \
+    DATA=$(curl -b cookie-jar.txt -c cookie-jar.txt --silent --show-error -k -L --max-redirs 0 --fail \
               -H "Authorization: Key ${CONNECT_API_KEY}" \
               "${CONNECT_SERVER}/__api__/v1/experimental/tasks/${TASK}?wait=1&first=${START}")
     # Extract parts of the task status
@@ -71,4 +71,6 @@ done
     echo "Task: ${TASK} ${ERROR}"
     exit 1
 fi
+
 echo "Task: ${TASK} Complete."
+
