@@ -15,13 +15,18 @@ api2 <- callr::r_bg(
   }
 )
 
-# Give APIs time to initialize
 Sys.sleep(5)
 
-on.exit({
+teardown({
   api1$kill()
   api2$kill()
 })
+
+test_that("API is alive", {
+  expect_true(api1$is_alive())
+  expect_true(api2$is_alive())
+})
+
 
 test_that("hello endpoint works", {
   # Send API request
