@@ -1,0 +1,25 @@
+language: R
+cache: packages
+env:
+  global:
+    - CONNECT_SERVER=https://colorado.rstudio.com/rsc
+    - API1_GUID=753242df-cc7a-4868-b890-ae0c8e6c586a
+    - API2_GUID=f815e6aa-4a09-41c5-816b-13353d590a03
+    - secure: 7TRCKY54pn9egy4lUCve18wtOlMGNF2GInZrHUHfPJ1zb6ySm4b+HBZ/23VYvmRiq25bMViaQkh5E+2c9mP8WlD0rMup4s66iNXOYh6zBIl+ce8Zo54HUvOqINrZ0rFb+jEWvB/B5LXpzCndvwxMD+JL/NY+6AzwkOD0T0m16xDYS8WILkc1uD9g9gZ6lBCkbXKOg8lYvEXZV9bYJ0y9UoVk4DUddQ73DRGa+6Y+M7TpZfnwrA1AcWWMEPNhiR8BOxEGiP7TEHeHwG9VdNEzYNxPLKcqjK12L7XqPTKucFlMOifYvB7Wl8Ke6PyJ4DBk8/PCfWaUtGHCAh1t0+Wvl7QBTrW9LvwqB6gbE1+4azZfRDZzmozXtrkvjc4wOUFUy/Zf6UfoNk8JJLpKS8GkqOuNRXxSrz4pLyEd6ReSkG4MmMiB+3MbJBDAimA/wx5Rxs3Qey0vL/Z+1vP6vl+GOCm0hicQOcEinS3PEQxl779PwGYRS6WcTVtr7tko1cOL2t7K54/lFMr0AfqSa4fI05P36I4hPsWjuJCn7uSKUsTDyAUqPvdlGG9eocfTKU2adU73SCxMq0BP1AoITFW3JIm+6WB5UC/5L6hMctNmsZeUFQRcxGP0rkUerIFZ5vNC3BoBD6w/Z6pg9XwO+VBcIPdBI+SlM25pKAJDVFx/SHE=
+
+matrix:
+  include:
+
+  - stage: "Test"
+    name: "Check release"
+    r: release
+
+  - stage: "Deploy"
+    name: "Deploy API 1"
+    script:
+    - bash scripts/deploy-rsc.sh ${API1_GUID} ./inst/plumber/api1
+
+  - stage: "Deploy"
+    name: "Deploy API 2"
+    script:
+    - bash scripts/deploy-rsc.sh ${API2_GUID} ./inst/plumber/api2
