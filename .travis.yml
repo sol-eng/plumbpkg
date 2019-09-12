@@ -16,10 +16,12 @@ matrix:
 
   - stage: "Deploy"
     name: "Deploy API 1"
+    if: branch IN (master) AND repo = sol-eng/plumbpkg AND type = push
     script:
     - bash scripts/deploy-rsc.sh ${API1_GUID} ./inst/plumber/api1
 
   - stage: "Deploy"
     name: "Deploy API 2"
+    if: branch IN (master) AND repo = sol-eng/plumbpkg AND type = push
     script:
     - bash scripts/deploy-rsc.sh ${API2_GUID} ./inst/plumber/api2
