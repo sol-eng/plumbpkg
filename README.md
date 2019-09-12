@@ -53,3 +53,17 @@ The `R/` directory contains all of the R functions used in the Plumber APIs.
 This enables the functions to be tested using files in the `tests/` directory.
 The Plumber APIs are defined in files in `inst/plumber/` and are also tested 
 using testthat and [httr](https://httr.r-lib.org).
+
+
+## Deploy
+This repository deploys both APIs to [RStudio
+Connect](https://www.rstudio.com/products/connect/) using
+[Travis](https://travis-ci.org/). The deployment is managed by
+[`scripts/deploy-rsc.sh`](scripts/deploy-rsc.sh) and uses the RStudio Connect
+API. Because this repository uses Travis, the APIs will only be deployed
+**after** tests have successfully completed.
+
+There are certainly other ways this content could be deployed, either using
+other CI/CD solutions or using [RStudio Connect's ability to publish content
+from a git
+repository](https://docs.rstudio.com/connect/1.7.6/user/git-backed.html).
